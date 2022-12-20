@@ -16,7 +16,17 @@ def custom_len(input_list):
 
     """
 
-    return 0
+    #pseudocode:
+    #define a counter equals to 0
+    #iterate through the given list
+    #and for each item in the list increase the counter by 1
+    #return the counter
+
+    counter = 0
+    for item in input_list:
+        counter += 1
+
+    return counter
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -44,7 +54,8 @@ def custom_append(input_list, value):
 
     """
 
-    pass
+    # input_list += [value]
+    input_list[len(input_list):] = [value]
 
 
 def custom_extend(input_list, second_list):
@@ -63,7 +74,7 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    input_list[len(input_list):] = second_list
 
 
 def custom_insert(input_list, index, value):
@@ -81,7 +92,12 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    # input_list[len(input_list)index] = value
+    
+    input_list[index:index] = [value]
+   
+
+custom_insert(['Jan', 'Mar'], 1, "Feb")
 
 
 def custom_remove(input_list, value):
@@ -99,8 +115,15 @@ def custom_remove(input_list, value):
         True
 
     """
-
-    pass
+    
+    for i, input in enumerate(input_list):
+        index = i
+        if input == value:
+            input_list[index:index +1] =[]
+        break    
+#     return input_list    
+# print(custom_remove(['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do'], "Do"))
+    
 
 
 def custom_pop(input_list):
@@ -118,8 +141,13 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
+    item_removed = input_list[-1]
+    new_list = input_list[-1:] = []
+   
 
-    return None
+    return item_removed
+
+# print(custom_pop(['Jan', 'Feb', 'March']))    
 
 
 def custom_index(input_list, value):
@@ -134,8 +162,12 @@ def custom_index(input_list, value):
         1
 
     """
+    for i, item_value in enumerate(input_list):
+        index = i
+        if item_value == value:
+            return index
 
-    return 0
+    
 
 
 def custom_count(input_list, value):
@@ -150,8 +182,12 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    counter = 0
+    for item in input_list:
+        if item == value:
+            counter += 1
+            
+    return counter
 
 
 def custom_reverse(input_list):
@@ -169,8 +205,13 @@ def custom_reverse(input_list):
         True
 
     """
+   
+    reversed_list = input_list[::-1]
+    input_list[0:] = reversed_list
 
-    pass
+# test_list =[0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+# custom_reverse(test_list)
+
 
 
 def custom_contains(input_list, value):
@@ -189,8 +230,11 @@ def custom_contains(input_list, value):
         True
 
     """
-
-    return None
+    for item in input_list:
+        if item == value:
+            return True
+    return False   
+   
 
 
 def custom_equality(some_list, another_list):
@@ -208,5 +252,17 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    if some_list == another_list:
+        return True
+    return False
 
-    return None
+    # for i, value1 in enumerate(some_list):
+    #     for x, value2 in enumerate(another_list):        
+    #         if i and value1 == x and value2:
+    #             continue
+    #         print(i, x, value1, value2)        
+    #     return True
+    # return False    
+
+    
+print(custom_equality(['Jan', 'Feb', 'Mar'], ['Jan', 'Mar', 'Feb']))
